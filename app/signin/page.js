@@ -2,6 +2,7 @@
 import React from "react";
 import signIn from "/firebase/auth/signin";
 import { useRouter } from 'next/navigation'
+import Link from "next/link";
 
 function Page() {
     const [email, setEmail] = React.useState('')
@@ -40,7 +41,7 @@ function Page() {
             </label>
             <button type="submit" className="bg-white w-24 my-3 rounded-sm">Sign In</button>
         </form>
-
+        <Link className="text-white text-sm font-thin uppercase mt-3 italic" href="/signup">Need to sign up? Click here</Link>
     </div>
     
         
