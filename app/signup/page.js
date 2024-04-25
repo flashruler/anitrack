@@ -3,6 +3,7 @@ import React from "react";
 import signUp from "../../firebase/auth/signup";
 import addData from "../../firebase/firestore/addData";
 import { useRouter } from "next/navigation";
+import { setCookie } from 'cookies-next';
 
 export default function Page() {
   const [email, setEmail] = React.useState("");
@@ -24,12 +25,22 @@ export default function Page() {
       email: email,
       username: username,
     };
-    const { result2, error2 } = await addData('users', result.user.uid, data)
+    const { result2, error2 } = await addData("users", result.user.uid, data);
+    cookies().set("UID", result.user.uid, { secure: true });
 
     if (error2) {
-      return console.log(error2)
+      return console.log(error2);
     }
     return router.push("/");
+  };
+
+  const [showConsent, setShowConsent] = React.useState(true);
+  React.useEffect(() => {
+    setShowConsent(hasCookie("localConsent"));
+  }, []);
+  const acceptCookie = () => {
+    setShowConsent(true);
+    setCookie("localConsent", "true", {});
   };
 
   return (
@@ -77,6 +88,19 @@ export default function Page() {
             Sign up
           </button>
         </form>
+      </div>
+      <div className="fixed bottom-0 left-0 right-0 flex items-center justify-between px-4 py-8 bg-gray-100">
+        <span className="text-dark text-base mr-16">
+          This website uses cookies to improve user experience. By using our
+          website you consent to all cookies in accordance with our Cookie
+          Policy.
+        </span>
+        <button
+          className="bg-green-500 py-2 px-8 rounded text-white"
+          onClick={() => acceptCookie()}
+        >
+          Accept
+        </button>
       </div>
     </div>
   );
