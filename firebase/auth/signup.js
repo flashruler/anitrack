@@ -1,10 +1,11 @@
 import firebase_app from "../config";
-import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import { createUserWithEmailAndPassword, getAuth, setPersistence, browserSessionPersistence } from "firebase/auth";
 
 const auth = getAuth(firebase_app);
-
+setPersistence(auth, browserSessionPersistence);
 
 export default async function signUp(email, password) {
+
     let result = null,
         error = null;
     try {
