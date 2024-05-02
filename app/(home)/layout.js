@@ -1,10 +1,10 @@
 "use client";
-import "../styles/globals.css";
+import "../../styles/globals.css";
 import { AuthContextProvider } from "/context/AuthContext";
-import SearchBar from "./components/searchbar";
+import SearchBar from "../components/searchbar";
 import Link from "next/link";
 
-export default function RootLayout({
+export default function Layout({
   // Layouts must accept a children prop.
   // This will be populated with nested layouts or pages
   children,

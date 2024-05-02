@@ -14,21 +14,19 @@ function Page() {
     event.preventDefault();
 
     const { result, error } = await signIn(email, password);
-
+    setCookie('UID', result.user.uid);
     if (error) {
       return console.log(error);
     }
 
     // else successful
-    console.log(result);
-    setCookie('UID', result.user.uid);
     return router.push("/");
   };
 
 
 
   return (
-    <div className="bg-[#0d1f2d] w-creen h-screen flex justify-center items-center">
+    <div className="bg-[#0d1f2d] w-screen h-screen flex justify-center items-center">
       <div className="flex flex-col items-center justify-center">
         <svg
           width="182"

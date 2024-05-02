@@ -24,9 +24,10 @@ export default function Page() {
     const data = {
       email: email,
       username: username,
+      anime:[]
     };
     const { result2, error2 } = await addData("users", result.user.uid, data);
-    cookies().set("UID", result.user.uid, { secure: true });
+    setCookie("UID", result.user.uid)
 
     if (error2) {
       return console.log(error2);
@@ -35,7 +36,7 @@ export default function Page() {
   };
 
   return (
-    <div className="bg-slate-900 w-creen h-screen flex justify-center items-center">
+    <div className="bg-slate-900 w-screen h-screen flex justify-center items-center">
       <div className="flex flex-col items-center justify-center">
         <h1 className="text-white text-2xl font-thin uppercase">Sign Up</h1>
         <form onSubmit={handleForm} className="flex flex-col items-center">
