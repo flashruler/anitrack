@@ -32,7 +32,6 @@ export const DisplayDash = (props) => {
       <div className="flex flex-col w-3/4 h-auto text-3xl font-light p-5">
         <div className="flex flex-row justify-between">
           <h1 className="text-2xl">{props.data.title}</h1>
-          <button className="bg-blue-200 p-2 rounded-md m-1 text-lg" onClick={() => console.log(data)}>Like</button>
         </div>
         <div className="flex flex-row">
           <div className="bg-blue-200 p-2 rounded-md m-1">

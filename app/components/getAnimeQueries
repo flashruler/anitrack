@@ -1,5 +1,5 @@
 export const fetchData = async(props)=>{
-  const res = await fetch(`https://api.jikan.moe/v4/anime?q=${props}`); //no shot this is actually how you make it work
-  const data = await res.json();
-  return data.data
+  const res = await fetch(`https://api.jikan.moe/v4/anime?q=${props}`) //no shot this is actually how you make it work
+    .then(res => res.json())
+      return res.data
 }
